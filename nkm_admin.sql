@@ -11,7 +11,7 @@
  Target Server Version : 80016
  File Encoding         : 65001
 
- Date: 09/09/2019 00:37:55
+ Date: 12/09/2019 17:49:40
 */
 
 SET NAMES utf8mb4;
@@ -58,7 +58,7 @@ CREATE TABLE `resource` (
   `parent_code` varchar(200) NOT NULL,
   `icon` varchar(200) NOT NULL,
   `sort` int(255) unsigned NOT NULL,
-  `url` varchar(255) NOT NULL,
+  `path` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `enable` int(10) unsigned NOT NULL,
   `create_time` bigint(255) unsigned NOT NULL,
   `is_delete` tinyint(1) unsigned NOT NULL DEFAULT '0',
@@ -138,7 +138,7 @@ CREATE TABLE `users` (
 -- Records of users
 -- ----------------------------
 BEGIN;
-INSERT INTO `users` VALUES (1, 'admin', 'a2b4b4304d93eb3895a7b1a0c3b23b88', '系统管理员', 'me@example.com', 'systemAdministrator', 1565758490904, 1567958994448, 1, 1, '/img/Fruit-2.c69b0c74.png', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36');
+INSERT INTO `users` VALUES (1, 'admin', 'a2b4b4304d93eb3895a7b1a0c3b23b88', '系统管理员', 'me@example.com', 'systemAdministrator', 1565758490904, 1568280995420, 1, 1, '/img/Fruit-2.c69b0c74.png', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
