@@ -12,7 +12,7 @@ const save = async ctx => {
     parentCode = '',
     icon = '',
     sort = 0,
-    url,
+    path,
     type = '',
     enable = 1
   } = ctx.request.body;
@@ -32,7 +32,7 @@ const save = async ctx => {
               parent_code,
               icon,
               sort,
-              url,
+              path,
               type,
               enable,
               create_time
@@ -44,7 +44,7 @@ const save = async ctx => {
               '${parentCode}',
               '${icon}',
               ${sort},
-              '${url}',
+              '${path}',
               '${type}',
               ${enable},
               ${Date.now()}
@@ -60,7 +60,7 @@ const save = async ctx => {
             parent_code = '${parentCode}',
             icon = '${icon}',
             sort = ${sort},
-            url = '${url}',
+            path = '${path}',
             enable = ${enable},
             type = '${type}'
           WHERE id = ${id}

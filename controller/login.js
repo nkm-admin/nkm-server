@@ -67,11 +67,11 @@ const login = async ctx => {
       if (permission.findIndex(v => +v === item.id) !== -1) {
         if (item.type === 'system:resource:menu') {
           menuList.push(item);
-          menuUrlList.push(item.url);
+          menuUrlList.push(item.path);
         } else if (item.type === 'system:resource:btn') {
           btnList.push(item.code);
         } else if (item.type === 'system:resource:api') {
-          apiList.push(item.url);
+          apiList.push(item.path);
         }
       }
     });
