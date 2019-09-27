@@ -24,7 +24,8 @@ const captcha = async ctx => {
     ctx.body = new Response(true, {
       data: {
         token: _token,
-        image
+        image,
+        text
       }
     });
   } else {
@@ -39,7 +40,8 @@ const captcha = async ctx => {
       ctx.body = new Response(true, {
         data: {
           token: token,
-          image
+          image,
+          text
         }
       });
     }
