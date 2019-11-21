@@ -1,11 +1,11 @@
-const Router = require('koa-router');
-const router = new Router();
-const login = require('./login');
-const registered = require('./registered');
-const system = require('./system');
-const personalCenter = require('./personalCenter');
-const dashboard = require('./dashboard');
-const captcha = require('./captcha');
+const Router = require('koa-router')
+const router = new Router()
+const login = require('./login')
+const registered = require('./registered')
+const system = require('./system')
+const personalCenter = require('./personalCenter')
+const dashboard = require('./dashboard')
+const captcha = require('./captcha')
 
 // router.get('/', ctx => {
 //   ctx.body = [
@@ -18,7 +18,7 @@ const captcha = require('./captcha');
 //     ...expenditureManagement,
 //     dashboard
 //   ]
-// });
+// })
 
 module.exports = [
   router,
@@ -28,4 +28,4 @@ module.exports = [
   personalCenter,
   dashboard,
   captcha
-];
+]

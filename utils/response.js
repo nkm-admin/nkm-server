@@ -1,4 +1,4 @@
-const { toLowerCamelCase, isObject } = require('./index');
+const { toLowerCamelCase, isObject } = require('./index')
 
 class Response {
   constructor (flag, obj) {
@@ -11,7 +11,7 @@ class Response {
       : this._error({
         message: obj.message,
         code: obj.code
-      });
+      })
   }
   _model ({ data = null, message = '请求成功！', code = 200, success = true, count = 0 } = {}) {
     return {
@@ -25,44 +25,44 @@ class Response {
   _success ({ data, count, message }) {
     // 转换字段为下划线分割为小驼峰
     const deepConversion = data => {
-      let newData = null;
+      let newData = null
       if (Array.isArray(data)) {
-        newData = [];
+        newData = []
         data.map((item, i) => {
           if (isObject(item)) {
-            newData[i] = {};
+            newData[i] = {}
             for (let [key, value] of Object.entries(item)) {
               // 如果是数组或者对象继续递归
               if ((Array.isArray(value) && value.length) || isObject(value)) {
-                newData[i][toLowerCamelCase(key)] = deepConversion(value);
+                newData[i][toLowerCamelCase(key)] = deepConversion(value)
               } else {
-                newData[i][toLowerCamelCase(key)] = value;
+                newData[i][toLowerCamelCase(key)] = value
               }
             }
           } else {
-            newData[i] = item;
+            newData[i] = item
           }
-        });
+        })
       } else if (isObject(data)) {
-        newData = {};
+        newData = {}
         for (let [key, value] of Object.entries(data)) {
           // 如果是数组或者对象继续递归
           if ((Array.isArray(value) && value.length) || isObject(value)) {
-            newData[toLowerCamelCase(key)] = deepConversion(value);
+            newData[toLowerCamelCase(key)] = deepConversion(value)
           } else {
-            newData[toLowerCamelCase(key)] = value;
+            newData[toLowerCamelCase(key)] = value
           }
         }
       } else {
-        newData = data;
+        newData = data
       }
-      return newData;
+      return newData
     }
-    return this._model({ data: deepConversion(data), count, message });
+    return this._model({ data: deepConversion(data), count, message })
   }
-  _error ({ message, code, data, success }) {
-    return this._model({ data, message, code, success: false });
+  _error ({ message, code, data, success = false }) {
+    return this._model({ data, message, code, success })
   }
 }
 
-module.exports = Response;
+module.exports = Response

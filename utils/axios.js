@@ -1,4 +1,4 @@
-const Axios = require('axios');
+const Axios = require('axios')
 
 const option = {
   timeout: 20000,
@@ -6,17 +6,17 @@ const option = {
     'Content-Type': 'application/json'
   },
   transformRequest: data => {
-    return JSON.stringify(data);
+    return JSON.stringify(data)
   }
 }
 
-const axios = Axios.create(option);
+const axios = Axios.create(option)
 
 // 添加请求拦截器
 axios.interceptors.request.use(config => {
-  return config;
+  return config
 }, error => {
-  return Promise.reject(error);
+  return Promise.reject(error)
 })
 
 axios.interceptors.response.use(response => {
@@ -27,7 +27,7 @@ axios.interceptors.response.use(response => {
     statusText: response.statusText
   }
 }, error => {
-  return Promise.reject(error);
-});
+  return Promise.reject(error)
+})
 
-module.exports = axios;
+module.exports = axios

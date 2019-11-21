@@ -1,7 +1,7 @@
-const sql = require('../../database/mysql');
-const Response = require('../../utils/response');
-const errorCode = require('../../utils/errorCode');
-const { deepTree, sortArr } = require('../../utils');
+const sql = require('../../database/mysql')
+const Response = require('../../utils/response')
+const errorCode = require('../../utils/errorCode')
+const { deepTree, sortArr } = require('../../utils')
 
 const save = async ctx => {
   const {
@@ -15,10 +15,10 @@ const save = async ctx => {
     path,
     type = '',
     enable = 1
-  } = ctx.request.body;
+  } = ctx.request.body
   // 参数为空直接返回错误信息
   if (!name || !code || !type) {
-    ctx.body = new Response(false, errorCode.fail);
+    ctx.body = new Response(false, errorCode.fail)
   } else {
     try {
       // 如果没有id就插入数据，否则更新数据
@@ -49,7 +49,7 @@ const save = async ctx => {
               ${enable},
               ${Date.now()}
             )
-        `);
+        `)
       } else {
         await sql(`
           UPDATE nkm_resource
@@ -64,42 +64,42 @@ const save = async ctx => {
             enable = ${enable},
             type = '${type}'
           WHERE id = ${id}
-        `);
+        `)
       }
-      ctx.body = new Response(true, errorCode.success);
+      ctx.body = new Response(true, errorCode.success)
     } catch (error) {
-      ctx.body = new Response(false, errorCode.saveResourceFail);
+      ctx.body = new Response(false, errorCode.saveResourceFail)
     }
   }
-  return ctx;
+  return ctx
 }
 
 const tree = async ctx => {
   try {
-    let data = await sql(`SELECT * FROM nkm_resource WHERE is_delete = 0`);
-    data.map(item => item.children = []);
+    let data = await sql(`SELECT * FROM nkm_resource WHERE is_delete = 0`)
+    data.map(item => item.children = [])
     ctx.body = new Response(true, {
       data: sortArr(deepTree(data))
-    });
+    })
   } catch (error) {
-    ctx.body = new Response(false, error);
+    ctx.body = new Response(false, error)
   }
-  return ctx;
+  return ctx
 }
 
 const del = async ctx => {
-  const { id } = ctx.request.body;
+  const { id } = ctx.request.body
   if (!id) {
-    ctx.body = new Response(false, errorCode.fail);
+    ctx.body = new Response(false, errorCode.fail)
   } else {
     try {
-      await sql(`UPDATE nkm_resource SET is_delete = 1 WHERE id = ${id}`);
-      ctx.body = new Response(true, errorCode.success);
+      await sql(`UPDATE nkm_resource SET is_delete = 1 WHERE id = ${id}`)
+      ctx.body = new Response(true, errorCode.success)
     } catch (error) {
-      ctx.body = new Response(false, error);
+      ctx.body = new Response(false, error)
     }
   }
-  return ctx;
+  return ctx
 }
 
 module.exports = {

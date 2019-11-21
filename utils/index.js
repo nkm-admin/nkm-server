@@ -4,7 +4,7 @@
  * @return {String}     displayName
  */
 const toLowerCamelCase = str => {
-  return str.replace(/(_[a-z])/g, $1 => $1.replace('_', '').toLocaleUpperCase());
+  return str.replace(/(_[a-z])/g, $1 => $1.replace('_', '').toLocaleUpperCase())
 }
 
 /**
@@ -12,7 +12,7 @@ const toLowerCamelCase = str => {
  * @param  {*}  obj
  * @return {Boolean}
  */
-const isObject = obj => Object.prototype.toString.call(obj) === '[object Object]';
+const isObject = obj => Object.prototype.toString.call(obj) === '[object Object]'
 
 /**
  * 一维数组转换为树形结构
@@ -21,14 +21,14 @@ const isObject = obj => Object.prototype.toString.call(obj) === '[object Object]
  * @return {Array} 树形数据
  */
 const deepTree = (arr, parentId = 0) => {
-  let result = [];
+  let result = []
   for (let i = 0; i < arr.length; i++) {
     if (arr[i].parent_id === parentId) {
-      arr[i].children = deepTree(arr, arr[i].id);
-      result.push(arr[i]);
+      arr[i].children = deepTree(arr, arr[i].id)
+      result.push(arr[i])
     }
   }
-  return result;
+  return result
 }
 
 /**
@@ -37,11 +37,12 @@ const deepTree = (arr, parentId = 0) => {
  * @param {Object} param1 可选字段进行排序比对，默认是查找当前的children字段，sort排序字段
  * @return {Array} 处理后的数组
  */
+// eslint-disable-next-line
 const sortArr = (arr, { children, sort } = {}) => {
   arr.map(item => {
-    if (item['children'].length) item['children'] = sortArr(item['children']);
-  });
-  return arr.sort((a, b) => a['sort'] - b['sort']);
+    if (item['children'].length) item['children'] = sortArr(item['children'])
+  })
+  return arr.sort((a, b) => a['sort'] - b['sort'])
 }
 
 /**

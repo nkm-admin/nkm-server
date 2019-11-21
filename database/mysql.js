@@ -1,13 +1,14 @@
-const mysql = require('mysql');
-const BASE_CONFIG = require('../config');
-const nkmAdminDB = mysql.createConnection(BASE_CONFIG.mysql.nkmAdmin);
+const mysql = require('mysql')
+const BASE_CONFIG = require('../config')
+const nkmAdminDB = mysql.createConnection(BASE_CONFIG.mysql.nkmAdmin)
 
 const sql = (sql) => {
   return new Promise((resolve, reject) => {
     nkmAdminDB.query(sql, (error, result) => {
       if (error) {
-        console.log(`[mysql error] ${error}`);
-        let errMsg = '';
+        console.log(`[mysql error] ${error}`)
+        let errMsg = ''
+        /* eslint-disable */
         switch (error.errno) {
           // 用户信息有误
           case 1045:
@@ -22,12 +23,13 @@ const sql = (sql) => {
               code: 'M' + error.errno
             }
         }
-        reject(errMsg);
+        /* eslint-disable */
+        reject(errMsg)
       } else {
-        resolve(result);
+        resolve(result)
       }
-    });
-  });
+    })
+  })
 }
 
-module.exports = sql;
+module.exports = sql
