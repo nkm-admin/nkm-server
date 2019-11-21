@@ -7,7 +7,7 @@ const registered = async ctx => {
   // 先查询并判断用户是否已经存在
   const isUsed = await sql(`
     SELECT user_login_name
-    FROM users
+    FROM nkm_users
     WHERE user_login_name = '${ctx.request.body.loginName}'
   `);
   if (isUsed.length) {
@@ -20,7 +20,7 @@ const registered = async ctx => {
       } else {
         await sql(`
           INSERT INTO
-          users (
+          nkm_users (
             user_login_name,
             user_password,
             display_name,

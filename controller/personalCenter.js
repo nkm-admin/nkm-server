@@ -12,7 +12,7 @@ const updateInfo = async ctx => {
     try {
       const { id } = await redis.hgetall(`user:${ctx.headers.token}`);
       await sql(`
-        UPDATE users
+        UPDATE nkm_users
           SET
             display_name = '${displayName}',
             user_email = '${email}'
@@ -33,7 +33,7 @@ const modifyPassword = async ctx => {
     try {
       const { id } = await redis.hgetall(`user:${ctx.headers.token}`);
       await sql(`
-        UPDATE users
+        UPDATE nkm_users
           SET
             user_password = '${encrypt.md5Slat(password)}'
         WHERE id = ${id}

@@ -12,12 +12,12 @@ const save = async ctx => {
     try {
       if (!id) {
         await sql(`
-          INSERT INTO role (name, code, permission, create_time)
+          INSERT INTO nkm_role (name, code, permission, create_time)
           VALUES ('${name}', '${code}', '${ids}', ${Date.now()})
         `);
       } else {
         await sql(`
-          UPDATE role
+          UPDATE nkm_role
           SET name = '${name}', permission = '${ids}'
           WHERE id = ${id}
         `);
@@ -32,7 +32,7 @@ const save = async ctx => {
 
 const list = async ctx => {
   try {
-    let data = await sql(`SELECT id, name, code, permission FROM role`);
+    let data = await sql(`SELECT id, name, code, permission FROM nkm_role`);
     ctx.body = new Response(true, { data });
   } catch (error) {
     ctx.body = new Response(false, error);
@@ -46,11 +46,11 @@ const del = async ctx => {
     ctx.body = new Response(false, errorCode.fail);
   } else {
     try {
-      const systemAdmin = await sql(`SELECT * FROM role WHERE id = ${id} AND code = 'systemAdministrator'`);
+      const systemAdmin = await sql(`SELECT * FROM nkm_role WHERE id = ${id} AND code = 'systemAdministrator'`);
       if (systemAdmin.length) {
         ctx.body = new Response(false, errorCode.delRoleSystemAdmin);
       } else {
-        await sql(`DELETE FROM role WHERE id = ${id} AND code <> 'systemAdministrator'`);
+        await sql(`DELETE FROM nkm_role WHERE id = ${id} AND code <> 'systemAdministrator'`);
         ctx.body = new Response(true, errorCode.success);
       }
     } catch (error) {

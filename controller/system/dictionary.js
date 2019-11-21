@@ -11,21 +11,21 @@ const save = async ctx => {
     ctx.body = new Response(false, errorCode.fail);
   } else {
     try {
-      const isRepeat = await sql(`SELECT * FROM dictionary WHERE code = '${code}'`);
+      const isRepeat = await sql(`SELECT * FROM nkm_dictionary WHERE code = '${code}'`);
       if (!id) {
         if (isRepeat.length) {
           ctx.body = new Response(false, { message: '字典编码已存在' });
         } else {
           await sql(`
             INSERT INTO
-            dictionary(name, code, value, parent_id, sort, create_time)
+            nkm_dictionary(name, code, value, parent_id, sort, create_time)
             VALUES('${name}', '${code}', '${realValue}', ${parentId}, ${sort}, ${Date.now()})
           `);
           ctx.body = new Response(true, errorCode.success);
         }
       } else {
         await sql(`
-          UPDATE dictionary
+          UPDATE nkm_dictionary
           SET
             name = '${name}',
             code = '${code}',
@@ -47,7 +47,7 @@ const tree = async ctx => {
   try {
     let data = await sql(`
       SELECT id, name, code, value, parent_id, sort
-      FROM dictionary
+      FROM nkm_dictionary
       WHERE is_delete = 0
     `);
     data.map(item => item.children = []);
@@ -64,7 +64,7 @@ const del = async ctx => {
     if (!id) {
       ctx.body = new Response(false, errorCode.fail);
     } else {
-      await sql(`UPDATE dictionary SET is_delete = 1 WHERE id = ${id}`);
+      await sql(`UPDATE nkm_dictionary SET is_delete = 1 WHERE id = ${id}`);
       ctx.body = new Response(true, errorCode.success);
     }
   } catch (error) {

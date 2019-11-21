@@ -25,7 +25,7 @@ const save = async ctx => {
       if (!id) {
         await sql(`
           INSERT INTO
-            resource (
+            nkm_resource (
               name,
               code,
               parent_id,
@@ -52,7 +52,7 @@ const save = async ctx => {
         `);
       } else {
         await sql(`
-          UPDATE resource
+          UPDATE nkm_resource
           SET
             name = '${name}',
             code = '${code}',
@@ -76,7 +76,7 @@ const save = async ctx => {
 
 const tree = async ctx => {
   try {
-    let data = await sql(`SELECT * FROM resource WHERE is_delete = 0`);
+    let data = await sql(`SELECT * FROM nkm_resource WHERE is_delete = 0`);
     data.map(item => item.children = []);
     ctx.body = new Response(true, {
       data: sortArr(deepTree(data))
@@ -93,7 +93,7 @@ const del = async ctx => {
     ctx.body = new Response(false, errorCode.fail);
   } else {
     try {
-      await sql(`UPDATE resource SET is_delete = 1 WHERE id = ${id}`);
+      await sql(`UPDATE nkm_resource SET is_delete = 1 WHERE id = ${id}`);
       ctx.body = new Response(true, errorCode.success);
     } catch (error) {
       ctx.body = new Response(false, error);

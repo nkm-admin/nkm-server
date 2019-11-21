@@ -3,12 +3,15 @@ const redis = require('../database/redis');
 const errorCode = require('../utils/errorCode');
 const encrypt = require('../utils/encrypt');
 const svgCaptcha = require('svg-captcha');
+svgCaptcha.options = {
+  fontSize: 'system-ui'
+}
 
 const captcha = async ctx => {
   let { token, v } = ctx.query;
   let _token = '';
-  const { text, data: image } = svgCaptcha.create({
-    noise: 2,
+  const { text, data: image } = svgCaptcha.createMathExpr({
+    noise: 0,
     color: true,
     ignoreChars: '0o1i',
     width: 100,

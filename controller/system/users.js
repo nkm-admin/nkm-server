@@ -18,10 +18,10 @@ const list = async ctx => {
         last_login_time,
         is_system_admin,
         role
-      FROM users
+      FROM nkm_users
       WHERE user_status <> 3
     `);
-    let [{ count }] = await sql(`SELECT COUNT(*) count FROM users`);
+    let [{ count }] = await sql(`SELECT COUNT(*) count FROM nkm_users`);
     ctx.body = new Response(true, {
       data: result,
       count
@@ -47,7 +47,7 @@ const modifyStatus = async ctx => {
     }
     try {
       await sql(`
-        UPDATE users
+        UPDATE nkm_users
           SET user_status = ${mark}
           WHERE id = ${id}
           AND is_system_admin <> 1
@@ -75,7 +75,7 @@ const resetPassword = async ctx => {
   } else {
     try {
       await sql(`
-        UPDATE users
+        UPDATE nkm_users
           SET user_password = '${encrypt.md5Slat('123456')}'
         WHERE id = ${id}
       `);
@@ -94,7 +94,7 @@ const allocationRole = async ctx => {
   } else {
     try {
       await sql(`
-        UPDATE users
+        UPDATE nkm_users
           SET role = '${role}'
         WHERE id = ${id}
       `);

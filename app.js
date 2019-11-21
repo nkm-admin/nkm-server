@@ -9,11 +9,16 @@ const redis = require('./database/redis');
 
 app.use(helmet());
 app.use(koaBody());
+
+// 拦截器
 app.use(check);
+
+// 注册路由
 routes.map(item => {
   item.prefix('/api/nkm-admin');
   app.use(item.routes());
 });
+
 app.on('error', (error, ctx) => {
   console.log('error===>', error);
 });

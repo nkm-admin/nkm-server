@@ -12,7 +12,7 @@ const login = async ctx => {
   // 查询用户信息
   const userInfo = await sql(`
     SELECT u.id, u.user_login_name, u.user_password, u.display_name, u.avatar, u.role, u.user_email, u.is_system_admin, r.permission
-    FROM users u, role r
+    FROM nkm_users u, nkm_role r
     WHERE u.user_login_name = '${loginName}'
     AND u.user_status = 1
     AND r.code = u.role
@@ -46,7 +46,7 @@ const login = async ctx => {
     const permission = userInfo[0].permission.split(',');
 
     // 查询所有资源
-    let resource = await sql(`SELECT * FROM resource`);
+    let resource = await sql(`SELECT * FROM nkm_resource`);
 
     // 生成菜单
     let menuList = [];
@@ -100,7 +100,7 @@ const login = async ctx => {
 
     // 记录最后登录信息
     await sql(`
-      UPDATE users
+      UPDATE nkm_users
       SET
         last_login_time = ${Date.now()},
         user_agent = '${userAgent}'
