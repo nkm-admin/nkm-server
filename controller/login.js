@@ -29,13 +29,18 @@ const login = async ctx => {
     }
 
     // 判断验证码是否正确
-    const redisCaptcha = await redis.get(`captcha:${ctx.cookies.get('captchaToken')}`)
-    if (!captcha) {
-      ctx.body = new Response(false, errorCode.captchaError)
-      return ctx
-    }
-    if (captcha.toLocaleLowerCase() !== redisCaptcha.toLocaleLowerCase()) {
-      ctx.body = new Response(false, errorCode.captchaError)
+    try {
+      const redisCaptcha = await redis.get(`captcha:${ctx.cookies.get('captchaToken')}`)
+      if (!captcha) {
+        ctx.body = new Response(false, errorCode.captchaError)
+        return ctx
+      }
+      if (captcha.toLocaleLowerCase() !== redisCaptcha.toLocaleLowerCase()) {
+        ctx.body = new Response(false, errorCode.captchaError)
+        return ctx
+      }
+    } catch (error) {
+      ctx.body = new Response(false, errorCode.captchaInvalid)
       return ctx
     }
 
