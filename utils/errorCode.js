@@ -7,6 +7,34 @@ module.exports = {
     code: 'A1000',
     message: '参数不能为空'
   },
+  noRouter: {
+    code: '404',
+    message: 'Not Found'
+  },
+  noFile: {
+    code: 'U1000',
+    message: '文件不能为空'
+  },
+  noFileType: {
+    code: 'U1001',
+    message: '暂不支持该上传文件类型'
+  },
+  noMultipleFile: {
+    code: 'U1002',
+    message: '暂不支持多文件上传'
+  },
+  imageSizeBeyond: {
+    code: 'U1003',
+    message: '图片大小超出范围'
+  },
+  videoSizeBeyond: {
+    code: 'U1004',
+    message: '视频大小超出范围'
+  },
+  fileSizeBeyond: {
+    code: 'U1005',
+    message: '文件大小超出范围'
+  },
   queryFail: {
     code: 'F1000',
     message: '查询失败'

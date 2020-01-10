@@ -6,19 +6,19 @@ const system = require('./system')
 const personalCenter = require('./personalCenter')
 const dashboard = require('./dashboard')
 const captcha = require('./captcha')
+const upload = require('./upload')
 
-// router.get('/', ctx => {
-//   ctx.body = [
-//     router,
-//     login,
-//     registered,
-//     ...system,
-//     personalCenter,
-//     rubbish,
-//     ...expenditureManagement,
-//     dashboard
-//   ]
-// })
+router.get('/', ctx => {
+  ctx.body = [
+    router,
+    login,
+    registered,
+    ...system,
+    personalCenter,
+    dashboard,
+    upload
+  ]
+})
 
 module.exports = [
   router,
@@ -27,5 +27,6 @@ module.exports = [
   ...system,
   personalCenter,
   dashboard,
-  captcha
+  captcha,
+  upload
 ]

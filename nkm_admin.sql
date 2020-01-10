@@ -11,7 +11,7 @@
  Target Server Version : 80016
  File Encoding         : 65001
 
- Date: 21/11/2019 12:00:15
+ Date: 10/01/2020 16:17:10
 */
 
 SET NAMES utf8mb4;
@@ -44,6 +44,19 @@ INSERT INTO `nkm_dictionary` VALUES (4, '页面', 'system:resource:page', 'syste
 INSERT INTO `nkm_dictionary` VALUES (5, '按钮', 'system:resource:btn', 'system:resource:btn', 2, 2, 1567835411706, 0);
 INSERT INTO `nkm_dictionary` VALUES (6, '接口', 'system:resource:api', 'system:resource:api', 2, 3, 1567835428482, 0);
 COMMIT;
+
+-- ----------------------------
+-- Table structure for nkm_files
+-- ----------------------------
+DROP TABLE IF EXISTS `nkm_files`;
+CREATE TABLE `nkm_files` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `path` varchar(255) NOT NULL,
+  `remote` varchar(255) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `size` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for nkm_resource
@@ -111,7 +124,7 @@ CREATE TABLE `nkm_role` (
 -- Records of nkm_role
 -- ----------------------------
 BEGIN;
-INSERT INTO `nkm_role` VALUES (1, '系统管理员', 'systemAdministrator', '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26', 1565586505970);
+INSERT INTO `nkm_role` VALUES (1, '系统管理员', 'systemAdministrator', '5,6,16,17,1,2,11,12,13,14,15,3,18,21,19,20,4,22,23,10,24,25,26', 1565586505970);
 COMMIT;
 
 -- ----------------------------
@@ -138,7 +151,7 @@ CREATE TABLE `nkm_users` (
 -- Records of nkm_users
 -- ----------------------------
 BEGIN;
-INSERT INTO `nkm_users` VALUES (1, 'admin', 'a2b4b4304d93eb3895a7b1a0c3b23b88', '系统管理员', 'me@example.com', 'systemAdministrator', 1565758490904, 1573875881425, 1, 1, '/img/Fruit-2.c69b0c74.png', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36');
+INSERT INTO `nkm_users` VALUES (1, 'admin', 'a2b4b4304d93eb3895a7b1a0c3b23b88', '系统管理员', 'me@example.com', 'systemAdministrator', 1565758490904, 1578623217636, 1, 1, '/img/Fruit-2.c69b0c74.png', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

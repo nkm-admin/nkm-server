@@ -7,13 +7,19 @@ const check = async (ctx, next) => {
   let token = ctx.request.headers.token
   const ignorePath = [
     /^\/api\/nkm-admin\/?$/,
-    // /^\/api\/nkm-admin\/registered$/,
     /^\/api\/nkm-admin\/login$/,
-    /^\/api\/nkm-admin\/captcha(\?.*)?$/
+    /^\/api\/nkm-admin\/captcha(\?.*)?$/,
+    /^\/upload/,
   ]
   if (ignorePath.findIndex(v => v.test(ctx.url)) !== -1) {
     return next()
   } else {
+    // 404
+    if (!/^\/api\/nkm-admin/.test(ctx.url)) {
+      ctx.body = new Response(false, errorCode.noRouter)
+      return ctx
+    }
+
     // 判断是否有token
     if (!token) {
       ctx.body = new Response(false, errorCode.noToken)
