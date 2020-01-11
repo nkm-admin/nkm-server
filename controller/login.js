@@ -62,9 +62,11 @@ const login = async ctx => {
     // 按钮
     let btnList = []
 
+    // 允许请求的接口地址
     let apiList = [
       '/api/my-admin/login',
-      '/api/my-admin/login-out'
+      '/api/my-admin/login-out',
+      '/api/nkm-admin/upload'
     ]
 
     resource.map(item => {
