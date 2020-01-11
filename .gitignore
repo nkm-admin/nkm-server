@@ -1,6 +1,6 @@
 .DS_Store
 node_modules/
-static/*
+static/upload
 
 .tern-project
 # Editor directories and files
