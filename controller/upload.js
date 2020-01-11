@@ -3,7 +3,7 @@ const path = require('path')
 const Response = require('../utils/response')
 const dateJS = require('../lib/date')
 const { host } = require('../config').app
-const sql = require('../database/mysql')
+const redis = require('../database/redis')
 
 const upload = async ctx => {
   try {
@@ -45,21 +45,25 @@ const upload = async ctx => {
     // 创建可写流
     const upStream = fs.createWriteStream(`${writeDir}/${filename}`)
     const remoteAddress = `${host}/upload/${year}/${month}/${filename}`
+    const absolutePath = `${writeDir}/${filename}`
 
     // 可读流通过管道写入可写流
     reader.pipe(upStream)
 
-    await sql(`
-      INSERT INTO
-        nkm_files(path, remote, size, type)
-        VALUES('${writeDir}/${filename}', '/upload/${year}/${month}/${filename}', ${fileSize}, '${fileType}')
-    `)
+    await redis.hset('upload', filename, JSON.stringify({
+      path: absolutePath,
+      remote: `/upload/${year}/${month}/${filename}`,
+      size: fileSize,
+      type: fileType,
+      isUsed: false
+    }))
 
     ctx.body = new Response(true, {
       data: {
         url: remoteAddress,
         size: fileSize,
-        type: fileType
+        type: fileType,
+        name: filename
       }
     })
   } catch (error) {

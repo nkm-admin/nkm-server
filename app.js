@@ -9,6 +9,10 @@ const checkMiddleware = require('./middleware/check')
 const uploadMiddleware = require('./middleware/upload')
 const path = require('path')
 const logger = require('koa-logger')
+require('colors')
+
+// 定时任务
+require('./schedule')
 
 app.use(logger())
 

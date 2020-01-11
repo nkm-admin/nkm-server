@@ -83,10 +83,11 @@ const login = async ctx => {
       }
     })
 
-    // redis缓存用户信息
+    // 缓存用户信息
     await redis.set(`loginName:${loginName}`, token)
     await redis.hset(`user:${token}`, 'id', userInfo[0].id)
     await redis.hset(`user:${token}`, 'loginName', loginName)
+    await redis.hset(`user:${token}`, 'avatar', userInfo[0].avatar)
     await redis.hset(`user:${token}`, 'token', token)
     await redis.hset(`user:${token}`, 'isAdmin', userInfo[0].is_system_admin)
     await redis.hset(`user:${token}`, 'apiList', JSON.stringify(apiList))
