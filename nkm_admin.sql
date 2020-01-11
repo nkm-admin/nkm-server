@@ -11,7 +11,7 @@
  Target Server Version : 80016
  File Encoding         : 65001
 
- Date: 10/01/2020 16:17:10
+ Date: 11/01/2020 23:17:18
 */
 
 SET NAMES utf8mb4;
@@ -51,12 +51,20 @@ COMMIT;
 DROP TABLE IF EXISTS `nkm_files`;
 CREATE TABLE `nkm_files` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `path` varchar(255) NOT NULL,
   `remote` varchar(255) NOT NULL,
   `type` varchar(20) NOT NULL,
   `size` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of nkm_files
+-- ----------------------------
+BEGIN;
+INSERT INTO `nkm_files` VALUES (42, '20200111225546159372.png', '/Users/xuanmo/Desktop/MyDocuments/nkm-admin/nkm-admin/static/upload/2020/01/20200111225546159372.png', '/upload/2020/01/20200111225546159372.png', 'image/png', 4648);
+COMMIT;
 
 -- ----------------------------
 -- Table structure for nkm_resource
