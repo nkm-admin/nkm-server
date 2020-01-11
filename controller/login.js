@@ -64,8 +64,8 @@ const login = async ctx => {
 
     // 允许请求的接口地址
     let apiList = [
-      '/api/my-admin/login',
-      '/api/my-admin/login-out',
+      '/api/nkm-admin/login',
+      '/api/nkm-admin/login-out',
       '/api/nkm-admin/upload'
     ]
 
