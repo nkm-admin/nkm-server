@@ -1,6 +1,6 @@
 module.exports = {
   app: {
-    address: 'http://localhost:3333',
+    host: 'http://localhost:3333',
     port: 3333
   },
   mysql: {

@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const Response = require('../utils/response')
 const dateJS = require('../lib/date')
-const { address } = require('../config').app
+const { host } = require('../config').app
 const sql = require('../database/mysql')
 
 const upload = async ctx => {
@@ -44,7 +44,7 @@ const upload = async ctx => {
 
     // 创建可写流
     const upStream = fs.createWriteStream(`${writeDir}/${filename}`)
-    const remoteAddress = `${address}/upload/${year}/${month}/${filename}`
+    const remoteAddress = `${host}/upload/${year}/${month}/${filename}`
 
     // 可读流通过管道写入可写流
     reader.pipe(upStream)
