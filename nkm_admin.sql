@@ -97,22 +97,21 @@ INSERT INTO `nkm_resource` VALUES (4, 'system:role', '角色管理', 'system:res
 INSERT INTO `nkm_resource` VALUES (5, 'dashboard', '仪表盘', 'system:resource:menu', 0, '', 'el-icon-odometer', 0, '/dashboard', 1, 1566136292367, 0);
 INSERT INTO `nkm_resource` VALUES (6, 'personal:center', '个人中心', 'system:resource:menu', 0, '', 'el-icon-user', 1, '/personal-center', 1, 1566220196928, 0);
 INSERT INTO `nkm_resource` VALUES (10, 'system:dictionary', '数据字典', 'system:resource:menu', 1, '', 'el-icon-notebook-1', 3, '/system/dictionary', 1, 1567432900204, 0);
-INSERT INTO `nkm_resource` VALUES (11, 'system:registered', '接口-用户注册', 'system:resource:api', 2, '', '', 100, '/api/my-admin/registered', 1, 1567850087778, 0);
-INSERT INTO `nkm_resource` VALUES (12, 'system:user:api:list', '接口-用户列表', 'system:resource:api', 2, '', '', 101, '/api/my-admin/system/user/list', 1, 1567850139496, 0);
-INSERT INTO `nkm_resource` VALUES (13, 'system:user:api:del', '接口-用户删除', 'system:resource:api', 2, '', '', 102, '/api/my-admin/system/user/modify', 1, 1567850434289, 0);
-INSERT INTO `nkm_resource` VALUES (14, 'system:user:api:allocation-role', '接口-分配角色', 'system:resource:api', 2, '', '', 103, '/api/my-admin/system/user/allocation-role', 1, 1567850496588, 0);
-INSERT INTO `nkm_resource` VALUES (15, 'system:user:api:reset-password', '接口-重置密码', 'system:resource:api', 2, '', '', 104, '/api/my-admin/system/user/reset-password', 1, 1567850698979, 0);
-INSERT INTO `nkm_resource` VALUES (16, 'system:user:api:update-info', '接口-修改信息', 'system:resource:api', 6, '', '', 105, '/api/my-admin/personal-center/update-info', 1, 1567850755775, 0);
-INSERT INTO `nkm_resource` VALUES (17, 'system:user:api:modify-password', '接口-修改密码', 'system:resource:api', 6, '', '', 106, '/api/my-admin/personal-center/modify-password', 1, 1567850801254, 0);
-INSERT INTO `nkm_resource` VALUES (18, 'system:resource:api:save', '接口-资源保存', 'system:resource:api', 3, '', '', 100, '/api/my-admin/system/resource/save', 1, 1567850844467, 0);
-INSERT INTO `nkm_resource` VALUES (19, 'system:resource:api:list', '接口-资源列表树', 'system:resource:api', 3, '', '', 101, '/api/my-admin/system/resource/tree', 1, 1567850884449, 0);
-INSERT INTO `nkm_resource` VALUES (20, 'system:resource:api:del', '接口-资源删除', 'system:resource:api', 3, '', '', 102, '/api/my-admin/system/resource/del', 1, 1567850924596, 0);
-INSERT INTO `nkm_resource` VALUES (21, 'system:role:api:save', '接口-角色保存', 'system:resource:api', 3, '', '', 100, '/api/my-admin/system/role/save', 1, 1567850961499, 0);
-INSERT INTO `nkm_resource` VALUES (22, 'system:role:api:list', '接口-角色列表', 'system:resource:api', 4, '', '', 101, '/api/my-admin/system/role/list', 1, 1567850998979, 0);
-INSERT INTO `nkm_resource` VALUES (23, 'system:role:api:del', '接口-角色删除', 'system:resource:api', 4, '', '', 102, '/api/my-admin/system/role/del', 1, 1567851041307, 0);
-INSERT INTO `nkm_resource` VALUES (24, 'system:dictionary:api:save', '接口-保存', 'system:resource:api', 10, '', '', 100, '/api/my-admin/system/dictionary/save', 1, 1567851096959, 0);
-INSERT INTO `nkm_resource` VALUES (25, 'system:dictionary:api:list', '接口-列表', 'system:resource:api', 10, '', '', 101, '/api/my-admin/system/dictionary/tree', 1, 1567851125206, 0);
-INSERT INTO `nkm_resource` VALUES (26, 'system:dictionary:api:del', '接口-删除', 'system:resource:api', 10, '', '', 102, '/api/my-admin/system/dictionary/del', 1, 1567851157874, 0);
+INSERT INTO `nkm_resource` VALUES (11, 'system:registered', '接口-用户注册', 'system:resource:api', 2, '', '', 100, '/api/nkm-admin/registered', 1, 1567850087778, 0);
+INSERT INTO `nkm_resource` VALUES (12, 'system:user:api:list', '接口-用户列表', 'system:resource:api', 2, '', '', 101, '/api/nkm-admin/system/user/list', 1, 1567850139496, 0);
+INSERT INTO `nkm_resource` VALUES (13, 'system:user:api:del', '接口-用户删除', 'system:resource:api', 2, '', '', 102, '/api/nkm-admin/system/user/modify', 1, 1567850434289, 0);
+INSERT INTO `nkm_resource` VALUES (15, 'system:user:api:reset-password', '接口-重置密码', 'system:resource:api', 2, '', '', 104, '/api/nkm-admin/system/user/reset-password', 1, 1567850698979, 0);
+INSERT INTO `nkm_resource` VALUES (16, 'system:user:api:update-info', '接口-修改信息', 'system:resource:api', 6, '', '', 105, '/api/nkm-admin/personal-center/update-info', 1, 1567850755775, 0);
+INSERT INTO `nkm_resource` VALUES (17, 'system:user:api:modify-password', '接口-修改密码', 'system:resource:api', 6, '', '', 106, '/api/nkm-admin/personal-center/modify-password', 1, 1567850801254, 0);
+INSERT INTO `nkm_resource` VALUES (18, 'system:resource:api:save', '接口-资源保存', 'system:resource:api', 3, '', '', 100, '/api/nkm-admin/system/resource/save', 1, 1567850844467, 0);
+INSERT INTO `nkm_resource` VALUES (19, 'system:resource:api:list', '接口-资源列表树', 'system:resource:api', 3, '', '', 101, '/api/nkm-admin/system/resource/tree', 1, 1567850884449, 0);
+INSERT INTO `nkm_resource` VALUES (20, 'system:resource:api:del', '接口-资源删除', 'system:resource:api', 3, '', '', 102, '/api/nkm-admin/system/resource/del', 1, 1567850924596, 0);
+INSERT INTO `nkm_resource` VALUES (21, 'system:role:api:save', '接口-角色保存', 'system:resource:api', 3, '', '', 100, '/api/nkm-admin/system/role/save', 1, 1567850961499, 0);
+INSERT INTO `nkm_resource` VALUES (22, 'system:role:api:list', '接口-角色列表', 'system:resource:api', 4, '', '', 101, '/api/nkm-admin/system/role/list', 1, 1567850998979, 0);
+INSERT INTO `nkm_resource` VALUES (23, 'system:role:api:del', '接口-角色删除', 'system:resource:api', 4, '', '', 102, '/api/nkm-admin/system/role/del', 1, 1567851041307, 0);
+INSERT INTO `nkm_resource` VALUES (24, 'system:dictionary:api:save', '接口-保存', 'system:resource:api', 10, '', '', 100, '/api/nkm-admin/system/dictionary/save', 1, 1567851096959, 0);
+INSERT INTO `nkm_resource` VALUES (25, 'system:dictionary:api:list', '接口-列表', 'system:resource:api', 10, '', '', 101, '/api/nkm-admin/system/dictionary/tree', 1, 1567851125206, 0);
+INSERT INTO `nkm_resource` VALUES (26, 'system:dictionary:api:del', '接口-删除', 'system:resource:api', 10, '', '', 102, '/api/nkm-admin/system/dictionary/del', 1, 1567851157874, 0);
 COMMIT;
 
 -- ----------------------------
