@@ -79,6 +79,8 @@ const login = async ctx => {
           btnList.push(item.code)
         } else if (item.type === 'system:resource:api') {
           apiList.push(item.path)
+        } else if(item.type === 'system:resource:page') {
+          menuUrlList.push(item.path)
         }
       }
     })
@@ -87,6 +89,7 @@ const login = async ctx => {
     await redis.set(`loginName:${loginName}`, token)
     await redis.hset(`user:${token}`, 'id', userInfo[0].id)
     await redis.hset(`user:${token}`, 'loginName', loginName)
+    await redis.hset(`user:${token}`, 'displayName', userInfo[0].display_name)
     await redis.hset(`user:${token}`, 'avatar', userInfo[0].avatar)
     await redis.hset(`user:${token}`, 'token', token)
     await redis.hset(`user:${token}`, 'isAdmin', userInfo[0].is_system_admin)
