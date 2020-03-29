@@ -66,7 +66,9 @@ const login = async ctx => {
     let apiList = [
       '/api/nkm-admin/login',
       '/api/nkm-admin/login-out',
-      '/api/nkm-admin/upload'
+      '/api/nkm-admin/upload',
+      '/api/nkm-admin/system/dictionary/tree',
+      '/api/nkm-admin/dashboard/init'
     ]
 
     resource.map(item => {
