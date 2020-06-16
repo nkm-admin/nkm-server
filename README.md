@@ -1,4 +1,6 @@
-# nkm后台管理系统初始化模版-后端
+# 此仓库不在更新，由于第一次写后台，很多地方考虑的不是很完善，所以不在维护，可移步至我的新后台仓库[https://github.com/nkm-admin/nkm-server-ts](https://github.com/nkm-admin/nkm-server-ts)
+
+## nkm后台管理系统初始化模版-后端
 
 > 测试账号：testAdmin/123456
 
